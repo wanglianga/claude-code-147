@@ -1,0 +1,20 @@
+:root {
+  --bg: #f4f6f3;
+}
+body { margin: 0; background: var(--bg); }
+.page-title { font-size: 18px; font-weight: 600; margin: 0; }
+.muted { color: #888; font-size: 12px; }
+.stat-card { border-radius: 12px; }
+.timeline-meta { color: #999; font-size: 12px; }
+.tag-mid { }
+.full-height { min-height: 100vh; }
+.login-bg {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #2f7a4d 0%, #6aa77e 100%);
+}
+.login-card { width: 380px; padding: 32px 28px; border-radius: 16px; background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.18); }
+.login-title { font-size: 22px; font-weight: 700; color: #1f3d2c; }
+.chain-section .ant-card-head { min-height: 40px; font-size: 13px; font-weight: 600; }
+.ant-table-cell { font-size: 13px; }
+.money { font-variant-numeric: tabular-nums; font-weight: 600; color: #c0392b; }
