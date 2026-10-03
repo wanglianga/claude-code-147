@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: homestay
+      POSTGRES_PASSWORD: homestay123
+      POSTGRES_DB: homestay
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U homestay -d homestay']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports:
+      - '5432:5432'
+
+  server:
+    build: ./server
+    environment:
+      DATABASE_URL: postgres://homestay:homestay123@db:5432/homestay
+      JWT_SECRET: homestay-prod-secret
+      PORT: 3000
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '3000:3000'
+
+  web:
+    build: ./web
+    depends_on:
+      - server
+    ports:
+      - '8080:80'
+
+volumes:
+  pgdata:
